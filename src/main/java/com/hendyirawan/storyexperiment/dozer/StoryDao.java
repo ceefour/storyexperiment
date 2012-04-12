@@ -56,6 +56,7 @@ public class StoryDao {
 		Iterable<Story> storyIterable = Iterables.transform(cursor, new Function<DBObject, Story>() {
 			@Override
 			public Story apply(DBObject input) {
+//				return mapper.map(input, Story.class);
 				String kind = (String) input.get("kind");
 				try {
 					Class<? extends Story> targetClass = (Class<? extends Story>) StoryDao.class.forName("com.hendyirawan.storyexperiment.dozer." + kind);
