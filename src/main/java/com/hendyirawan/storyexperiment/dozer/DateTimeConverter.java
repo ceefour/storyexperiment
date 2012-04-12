@@ -3,6 +3,8 @@
  */
 package com.hendyirawan.storyexperiment.dozer;
 
+import java.util.Date;
+
 import org.dozer.CustomConverter;
 import org.joda.time.DateTime;
 
@@ -19,9 +21,16 @@ public class DateTimeConverter implements CustomConverter {
 	public Object convert(Object existingDestinationFieldValue,
 			Object sourceFieldValue, Class<?> destinationClass,
 			Class<?> sourceClass) {
-		if (sourceClass == DateTime.class) {
-			return ((DateTime)sourceFieldValue).toString();
+		if (DateTime.class.isAssignableFrom(sourceClass)) {
+			// Source is DateTime
+			if (Date.class.isAssignableFrom(destinationClass)) {
+				return ((DateTime)sourceFieldValue).toDate();
+			} else {
+				return ((DateTime)sourceFieldValue).toString();
+			}
 		} else {
+			// Source is something else, either Date or String
+			// and want to convert to DateTime
 			return new DateTime(sourceFieldValue);
 		}
 	}

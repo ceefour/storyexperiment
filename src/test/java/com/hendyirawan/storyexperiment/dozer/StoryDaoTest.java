@@ -3,9 +3,12 @@
  */
 package com.hendyirawan.storyexperiment.dozer;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.dozer.DozerBeanMapper;
 import org.jboss.arquillian.junit.Arquillian;
+import org.joda.time.DateTime;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,8 +17,10 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.hendyirawan.storyexperiment.dozer.Story;
-import com.hendyirawan.storyexperiment.dozer.StoryDao;
+import com.hendyirawan.storyexperiment.vo.PersonLikeArticle;
+import com.hendyirawan.storyexperiment.vo.SimpleRef;
+import com.hendyirawan.storyexperiment.vo.Story;
+import com.mongodb.BasicDBObject;
 import com.mongodb.MongoURI;
 
 /**
@@ -55,6 +60,23 @@ public class StoryDaoTest {
 				!stories.isEmpty());
 		Story story = stories.get(0);
 		Assert.assertEquals("hendy", story.getSubject());
+	}
+
+	@Test
+	public void storyCanBeConvertedToDBObject() {
+		PersonLikeArticle story = new PersonLikeArticle();
+		story.setId("4f86f21dc7e3f62b7b3a4a2f");
+		story.setKind("PersonLikeArticle");
+		story.setLiked(new SimpleRef());
+		story.setLiker(new SimpleRef());
+		story.setCreated(new DateTime());
+
+		ArrayList<String> mappingFiles = new ArrayList<String>();
+		mappingFiles.add("com/hendyirawan/storyexperiment/dozer/storyexperiment.dozer.xml");
+		final DozerBeanMapper mapper = new DozerBeanMapper(mappingFiles);
+		
+		BasicDBObject obj = mapper.map(story, BasicDBObject.class);
+		log.info("DBObject: {}", obj);
 	}
 
 }

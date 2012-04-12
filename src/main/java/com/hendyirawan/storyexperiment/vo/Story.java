@@ -1,4 +1,4 @@
-package com.hendyirawan.storyexperiment.dozer;
+package com.hendyirawan.storyexperiment.vo;
 
 import org.joda.time.DateTime;
 import org.slf4j.Logger;

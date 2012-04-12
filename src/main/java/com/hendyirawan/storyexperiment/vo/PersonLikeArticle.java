@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.hendyirawan.storyexperiment.dozer;
+package com.hendyirawan.storyexperiment.vo;
 
 /**
  * Person like Article.

@@ -1,12 +1,13 @@
 /**
  * 
  */
-package com.hendyirawan.storyexperiment.dozer;
+package com.hendyirawan.storyexperiment.smooks;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.dozer.DozerBeanMapper;
+import org.milyn.Smooks;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +23,7 @@ import com.mongodb.DBObject;
 import com.mongodb.MongoURI;
 
 /**
- * Story DAO with mapped style.
+ * Story DAO with mapped style via Smooks.
  * @author atang, ceefour
  */
 public class StoryDao {
@@ -51,16 +52,14 @@ public class StoryDao {
 
 	public List<Story> findBySubject(String subject) {
 		DBCursor cursor = coll.find(new BasicDBObject("subject", subject));
-		ArrayList<String> mappingFiles = new ArrayList<String>();
-		mappingFiles.add("com/hendyirawan/storyexperiment/dozer/storyexperiment.dozer.xml");
-		final DozerBeanMapper mapper = new DozerBeanMapper(mappingFiles);
+//		Smooks smooks = new Smooks("com/hendyirawan/storyexperiment/smooks/storyexperiment.smooks.xml");
+		final DozerBeanMapper mapper = new DozerBeanMapper();
 		Iterable<Story> storyIterable = Iterables.transform(cursor, new Function<DBObject, Story>() {
 			@Override
 			public Story apply(DBObject input) {
-//				return mapper.map(input, Story.class);
 				String kind = (String) input.get("kind");
 				try {
-					Class<? extends Story> targetClass = (Class<? extends Story>) StoryDao.class.forName("com.hendyirawan.storyexperiment.vo." + kind);
+					Class<? extends Story> targetClass = (Class<? extends Story>) StoryDao.class.forName("com.hendyirawan.storyexperiment.dozer." + kind);
 					Story story = mapper.map(input, targetClass);
 					return story;
 				} catch (ClassNotFoundException e) {
