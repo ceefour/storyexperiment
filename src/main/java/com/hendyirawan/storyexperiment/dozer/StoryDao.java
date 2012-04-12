@@ -44,11 +44,9 @@ public class StoryDao {
 		return mongoUri;
 	}
 
-
 	public void setMongoUri(MongoURI mongoUri) {
 		this.mongoUri = mongoUri;
 	}
-
 
 	public List<Story> findBySubject(String subject) {
 		DBCursor cursor = coll.find(new BasicDBObject("subject", subject));
@@ -70,7 +68,7 @@ public class StoryDao {
 			}
 		});
 		ArrayList<Story> stories = Lists.newArrayList(storyIterable);
-		log.debug("findByShopId {} return {} documents ", subject, stories.size());
+		log.debug("findBySubject {} returns {} documents ", subject, stories.size());
 		return stories;
 	}
 
