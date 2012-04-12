@@ -1,2 +1,32 @@
 h1. Story Experiment
 
+Attempts to store a "polymorphic story" in 3 different ways:
+
+1. Using Dynamic Value Object (manual)
+2. Using Mapped Value Object, via Dozer
+3. Using Mapped Value Object, via Smooks
+4. Using Spring Data MongoDB
+
+A polymorphic story has 4 variants:
+
+1. @PersonFollowPerson@
+2. @PersonLikeArticle@
+3. @PersonCommentArticle@
+4. @PersonWallPerson@
+
+h3. Extras
+
+As an extra, I also attempt to write 6 random generators for:
+
+1. Person objects
+2. Article objects
+3. @PersonFollowPerson@ stories
+4. @PersonLikeArticle@ stories
+5. @PersonCommentArticle@ stories
+6. @PersonWallPerson@ stories
+
+h3. TODO
+
+1. Create domain objects using Ecore / EMF. Note: resulting domain objects should "just work" with Dozer mapping, spring Data mapping,
+   and technologies such as JAX-RS, Jackson.
+2. Add another alternative: MongoEMF (probably won't use it anyway, but interesting)
