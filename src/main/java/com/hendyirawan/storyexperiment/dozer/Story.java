@@ -1,7 +1,5 @@
 package com.hendyirawan.storyexperiment.dozer;
 
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.SerializationConfig.Feature;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +12,7 @@ import com.hendyirawan.storyexperiment.common.JacksonUtils;
  */
 public class Story {
 
-	private transient Logger log = LoggerFactory.getLogger(Story.class);
+	private String id;
 	private String subject;
 	private String kind;
 	private DateTime created;
@@ -66,5 +64,11 @@ public class Story {
 	}
 	public void setPublicized(boolean publicized) {
 		this.publicized = publicized;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 }

@@ -10,6 +10,15 @@
 			</converter>
 		</custom-converters>
 	</configuration>
+	
+	<mapping>
+		<class-a>org.bson.BSONObject</class-a>
+		<class-b>com.hendyirawan.storyexperiment.dozer.Story</class-b>
+		<field>
+			<a key="_id">this</a>
+			<b>id</b>
+		</field>
+	</mapping>
 
 </mappings>
         
