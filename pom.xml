@@ -153,11 +153,17 @@
 	</build>
 	<profiles>
 		<profile>
-			<id>weld-se</id>
+			<id>weld-ee</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<dependencies>
+				<dependency>
+					<groupId>org.jboss.weld.se</groupId>
+					<artifactId>weld-core</artifactId>
+					<version>1.1.7.Final</version>
+					<scope>test</scope>
+				</dependency>
 				<dependency>
 					<groupId>org.jboss.weld.arquillian.container</groupId>
 					<artifactId>arquillian-weld-ee-embedded-1.1</artifactId>
