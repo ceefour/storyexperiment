@@ -183,9 +183,7 @@
 			</dependencies>
 		</profile>
 		<profile>
-			<id>jboss</id>
-			<activation>
-			</activation>
+			<id>glassfish</id>
 			<dependencies>
 				<dependency>
 					<groupId>org.jboss.arquillian.container</groupId>
