@@ -1,6 +1,6 @@
 package com.hendyirawan.storyexperiment.morphia;
 
-import com.hendyirawan.storyexperiment.common.JacksonUtils;
+import com.hendyirawan.storyexperiment.common.JsonUtils;
 
 /**
  * Simple reference to a cloud object within the same tenant.
@@ -91,6 +91,6 @@ public class SimpleRef {
 
 	@Override
 	public String toString() {
-		return JacksonUtils.asJson(this);
+		return JsonUtils.asJson(this);
 	}
 }

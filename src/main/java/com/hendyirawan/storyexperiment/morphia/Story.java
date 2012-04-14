@@ -1,20 +1,25 @@
 package com.hendyirawan.storyexperiment.morphia;
 
+import java.io.Serializable;
+
 import org.bson.types.ObjectId;
 import org.joda.time.DateTime;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
-import com.hendyirawan.storyexperiment.common.JacksonUtils;
+import com.hendyirawan.storyexperiment.common.JsonUtils;
 
 /**
  * Simple Story.
  * @author ceefour
  */
+@SuppressWarnings("serial")
 @Entity(noClassnameStored=true)
-public class Story {
+public class Story implements Serializable {
 
-	@Id private ObjectId id;
+	@Id @JsonSerialize(using=ToStringSerializer.class) private ObjectId id;
 	private String subject;
 	private String kind;
 	private DateTime created;
@@ -79,7 +84,7 @@ public class Story {
 	
 	@Override
 	public String toString() {
-		return JacksonUtils.asJson(this);
+		return JsonUtils.asJson(this);
 	}
 	public boolean isPublicized() {
 		return publicized;

@@ -1,14 +1,17 @@
 package com.hendyirawan.storyexperiment.vo;
 
+import java.io.Serializable;
+
 import org.joda.time.DateTime;
 
-import com.hendyirawan.storyexperiment.common.JacksonUtils;
+import com.hendyirawan.storyexperiment.common.JsonUtils;
 
 /**
  * Simple Story.
  * @author ceefour
  */
-public class Story {
+@SuppressWarnings("serial")
+public class Story implements Serializable {
 
 	private String id;
 	private String subject;
@@ -65,7 +68,7 @@ public class Story {
 	
 	@Override
 	public String toString() {
-		return JacksonUtils.asJson(this);
+		return JsonUtils.asJson(this);
 	}
 	public boolean isPublicized() {
 		return publicized;
