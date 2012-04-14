@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.hendyirawan.storyexperiment.morphia;
 
 import java.util.ArrayList;
@@ -22,7 +19,6 @@ import com.google.code.morphia.mapping.MappingException;
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.hendyirawan.storyexperiment.vo.Story;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -99,7 +95,7 @@ public class StoryDao {
 			@Override
 			public Story apply(DBObject input) {
 				String kind = (String) input.get("kind");
-				String className = "com.hendyirawan.storyexperiment.vo." + kind;
+				String className = "com.hendyirawan.storyexperiment.morphia." + kind;
 				log.debug("Morphing Story {} to {}", input.get("_id"), className);
 				try {
 					Class<? extends Story> targetClass = (Class<? extends Story>) StoryDao.class.forName(className);

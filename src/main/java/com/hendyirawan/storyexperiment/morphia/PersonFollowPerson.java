@@ -12,6 +12,17 @@ public class PersonFollowPerson extends Story {
 
 	@Embedded private SimpleRef follower;
 	@Embedded private SimpleRef followed;
+
+	public PersonFollowPerson() {
+		super();
+	}
+	
+	public PersonFollowPerson(String subject, boolean publicized,
+			SimpleRef follower, SimpleRef followed) {
+		super(subject, "PersonFollowPerson", publicized);
+		this.follower = follower;
+		this.followed = followed;
+	}
 	
 	/**
 	 * @return the follower

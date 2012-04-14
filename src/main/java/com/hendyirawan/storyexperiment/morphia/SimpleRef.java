@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.hendyirawan.storyexperiment.morphia;
 
 import com.hendyirawan.storyexperiment.common.JacksonUtils;
@@ -18,6 +15,19 @@ public class SimpleRef {
 	private String name;
 	private String photoId;
 	
+	public SimpleRef() {
+	}
+	
+	public SimpleRef(String id, String targetKind, String slug, String name,
+			String photoId) {
+		super();
+		this.id = id;
+		this.targetKind = targetKind;
+		this.slug = slug;
+		this.name = name;
+		this.photoId = photoId;
+	}
+
 	/**
 	 * @return the id
 	 */

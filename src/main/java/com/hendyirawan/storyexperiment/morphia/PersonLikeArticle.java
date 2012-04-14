@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.hendyirawan.storyexperiment.morphia;
 
 import com.google.code.morphia.annotations.Embedded;
@@ -16,6 +13,17 @@ public class PersonLikeArticle extends Story {
 
 	@Embedded private SimpleRef liker;
 	@Embedded private SimpleRef liked;
+	
+	public PersonLikeArticle() {
+		super();
+	}
+	
+	public PersonLikeArticle(String subject, boolean publicized,
+			SimpleRef liker, SimpleRef liked) {
+		super(subject, "PersonLikeArticle", publicized);
+		this.liker = liker;
+		this.liked = liked;
+	}
 	
 	/**
 	 * @return the liker
