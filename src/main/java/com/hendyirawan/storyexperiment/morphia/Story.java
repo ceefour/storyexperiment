@@ -1,29 +1,41 @@
-package com.hendyirawan.storyexperiment.vo;
+package com.hendyirawan.storyexperiment.morphia;
 
+import org.bson.types.ObjectId;
 import org.joda.time.DateTime;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Id;
 import com.hendyirawan.storyexperiment.common.JacksonUtils;
 
 /**
  * Simple Story.
  * @author ceefour
  */
+@Entity(noClassnameStored=true)
 public class Story {
 
-	private String id;
+	@Id private ObjectId id;
 	private String subject;
 	private String kind;
 	private DateTime created;
 	private boolean publicized;
-	
+
+	/**
+	 * Create an absolutely empty Story.
+	 */
 	public Story() {
 	}
 	
-	public Story(String subject, boolean publicized) {
+	/**
+	 * You should create a concrete subclass of Story, not this constructor.
+	 * @param subject
+	 * @param kind
+	 * @param publicized
+	 */
+	public Story(String subject, String kind, boolean publicized) {
 		super();
 		this.subject = subject;
+		this.kind = kind;
 		this.publicized = publicized;
 		this.created = new DateTime();
 	}
@@ -75,10 +87,16 @@ public class Story {
 	public void setPublicized(boolean publicized) {
 		this.publicized = publicized;
 	}
-	public String getId() {
+	/**
+	 * @return the id
+	 */
+	public ObjectId getId() {
 		return id;
 	}
-	public void setId(String id) {
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(ObjectId id) {
 		this.id = id;
 	}
 }

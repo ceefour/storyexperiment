@@ -1,29 +1,21 @@
 /**
  * 
  */
-package com.hendyirawan.storyexperiment.vo;
+package com.hendyirawan.storyexperiment.morphia;
+
+import com.google.code.morphia.annotations.Embedded;
+import com.google.code.morphia.annotations.Entity;
 
 /**
  * Person like Article.
  * @author ceefour
  *
  */
+@Entity(noClassnameStored=true)
 public class PersonLikeArticle extends Story {
 
-	private SimpleRef liker;
-	private SimpleRef liked;
-	
-	public PersonLikeArticle() {
-		super();
-	}
-	
-	public PersonLikeArticle(String subject, boolean publicized,
-			SimpleRef liker, SimpleRef liked) {
-		super(subject, publicized);
-		setKind("PersonLikeArticle");
-		this.liker = liker;
-		this.liked = liked;
-	}
+	@Embedded private SimpleRef liker;
+	@Embedded private SimpleRef liked;
 	
 	/**
 	 * @return the liker

@@ -6,6 +6,7 @@ Attempts to store a "polymorphic story" in 3 different ways:
 2. Using Mapped Value Object, via Dozer
 3. Using Mapped Value Object, via Smooks
 4. Using Spring Data MongoDB
+5. Using Mapped Value Object, via "Morphia":https://code.google.com/p/morphia/ ("Morphia article at IBM DeveloperWorks":http://www.ibm.com/developerworks/java/library/j-morphia/)
 
 A polymorphic story has 4 variants:
 
